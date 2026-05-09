@@ -359,3 +359,52 @@ _GLOBAL__sub_I__Z9factoriali:
 	.quad	_ZSt4cout
 #p.s. Надеюсь все правильно :)
 </pre>
+
+Модульная версия
+factorial.h
+<pre>
+#ifndef FACTORIAL_H
+#define FACTORIAL_H
+
+unsigned long long factorial(int n);
+void writeResultToFile(int number, unsigned long long result, const char* filename);
+int readNumberFromFile(const char* filename);
+
+#endif
+
+</pre>
+
+factorial.cpp(Модуль)
+<pre>
+#include "factorial.h"
+#include <fstream>
+#include <iostream>
+
+unsigned long long factorial(int n) {
+    unsigned long long result = 1;
+    for (int i = 2; i <= n; ++i) {
+        result *= i;
+    }
+    return result;
+}
+
+void writeResultToFile(int number, unsigned long long result, const char* filename) {
+    std::ofstream file(filename, std::ios::app);
+    if (file.is_open()) {
+        file << "Factorial of " << number << " = " << result << "\n";
+        file.close();
+    }
+}
+
+int readNumberFromFile(const char* filename) {
+    std::ifstream file(filename);
+    int number;
+    if (file.is_open()) {
+        file >> number;
+        file.close();
+        return number;
+    }
+    return -1;
+}
+
+</pre>
