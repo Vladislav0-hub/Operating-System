@@ -14,35 +14,37 @@
 
 ## 3. Исследование оптимизаций GCC
 Сам код написанный на C++
-`#include <iostream>`
-`#include <chrono>`
-`
-`unsigned long long factorial(int n) {`
-`    unsigned long long result = 1;`
-`    for (int i = 2; i <= n; ++i) {`
-`        result *= i;`
-`    }`
-`    return result;`
-`}`
-`
-`int main() {`
-`    int number;`
-`    std::cout << "Enter number (0-20): ";`
-`    std::cin >> number;`
-`
-`    if (number < 0 || number > 20) {`
-`        std::cerr << "Error: number must be between 0 and 20\n";`
-`        return 1;`
-`    }`
-`
-`    auto start = std::chrono::high_resolution_clock::now();`
-`    unsigned long long result = factorial(number);`
-`    auto end = std::chrono::high_resolution_clock::now();`
-`
-`    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start);`
-`
-`    std::cout << "Factorial of " << number << " = " << result << "\n";`
-`    std::cout << "Time: " << duration.count() << " microseconds\n";`
-`
-`    return 0;`
-`}`
+<pre>
+#include &lt;iostream&gt;
+#include &lt;chrono&gt;
+
+unsigned long long factorial(int n) {
+    unsigned long long result = 1;
+    for (int i = 2; i &lt;= n; ++i) {
+        result *= i;
+    }
+    return result;
+}
+
+int main() {
+    int number;
+    std::cout &lt;&lt; "Enter number (0-20): ";
+    std::cin &gt;&gt; number;
+
+    if (number &lt; 0 || number &gt; 20) {
+        std::cerr &lt;&lt; "Error: number must be between 0 and 20\n";
+        return 1;
+    }
+
+    auto start = std::chrono::high_resolution_clock::now();
+    unsigned long long result = factorial(number);
+    auto end = std::chrono::high_resolution_clock::now();
+
+    auto duration = std::chrono::duration_cast&lt;std::chrono::microseconds&gt;(end - start);
+
+    std::cout &lt;&lt; "Factorial of " &lt;&lt; number &lt;&lt; " = " &lt;&lt; result &lt;&lt; "\n";
+    std::cout &lt;&lt; "Time: " &lt;&lt; duration.count() &lt;&lt; " microseconds\n";
+
+    return 0;
+}
+&lt;/pre&gt;
