@@ -360,7 +360,7 @@ _GLOBAL__sub_I__Z9factoriali:
 #p.s. Надеюсь все правильно :)
 </pre>
 
-Модульная версия
+###Модульная версия программы
 factorial.h
 <pre>
 #ifndef FACTORIAL_H
