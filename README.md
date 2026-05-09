@@ -47,7 +47,15 @@ int main() {
 
     return 0;
 }
-<pre>
+</pre>
 
 Все выполненные оптимизации
-    
+<pre>
+g++ -S -o factorial_no_opt.s factorial.cpp - Без оптимизации
+
+g++ -S -O1 -o factorial_O1.s factorial.cpp - 1-й уровень оптимизации
+g++ -S -O2 -o factorial_O2.s factorial.cpp - 2-ой уровень оптимизации
+g++ -S -O3 -o factorial_O3.s factorial.cpp - 3-й уровень оптимизации
+
+g++ -S -g -o factorial_g.s factorial.cpp - C отладочной информацией
+</pre>
